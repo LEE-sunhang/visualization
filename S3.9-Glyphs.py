@@ -7,7 +7,7 @@ from bokeh.sampledata.iris import flowers
 from bokeh.models import Range1d, PanTool, ResetTool, HoverTool
 
 #Define the output file path
-output_file("iris.html")
+output_file("S3.9-iris.html")
 
 #Create the figure object
 f = figure()
@@ -19,8 +19,8 @@ f.toolbar_location = 'above'
 f.toolbar.logo = None
 
 #Style the plot area
-f.plot_width = 1100
-f.plot_height = 650
+f.width = 1100
+f.height = 650
 f.background_fill_color = "olive"
 f.background_fill_alpha = 0.3
 
@@ -60,6 +60,8 @@ flowers['color']=[colormap[x] for x in flowers['species']]
 #adding glyphs
 f.circle(x=flowers["petal_length"], y=flowers["petal_width"],
          size=flowers['sepal_width']*4, fill_alpha=0.2, color=flowers['color'], line_dash=[5,3])
+#Warning!# 
+#line_dash produces Error - deprecation# 
 
 #Save and show the figure
 show(f)
