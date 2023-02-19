@@ -17,10 +17,16 @@ source = ColumnDataSource(grades_dict)
 # Create the figure
 x_range = ["F","D-","D","D+","C-","C","C+","B-","B","B+","A-","A","A+"]
 y_range = ["F","D-","D","D+","C-","C","C+","B-","B","B+","A-","A","A+"]
+
 f = figure(height=450,
            width=450,
            x_range=x_range,
            y_range=y_range)
+
+f.circle(x='average_grades',
+         y='exam_grades',
+         size=8,
+         source=source)
 
 
 # Add labels for glyphs
@@ -32,35 +38,29 @@ labels = LabelSet(x='average_grades',
                   source=source)
 f.add_layout(labels)
 
+# To curdoc
+curdoc().add_root(f)
+
+
+## Create select widget
+## [("column_name", "dropdown name"),...]
+options = [("average_grades", "Average Grades"),
+           ("exam_grades", "Exam Grades"),
+           ("student_names", "Student Names")]
+select = Select(title="Dropdowns", options=options)
+
 
 # Create a function for widget
 def update_labels(attr, old, new):
     labels.text = select.value
-
-# Create select widget
-# options = [("column_name", "dropdown name"),...]
-options = [("average_grades", "Average Grades"),
-           ("exam_grades", "Exam Grades"),
-           ("student_names", "Student Names")]
-select = Select(title="Attribute", options=options, size=8)
-
+    
 select.on_change("value", update_labels)
 
 
-# Create layout and add to curdoc
-lay_out = layout( [select] )
-curdoc().add_root(f)
+# Create layout
+lay_out = layout( [[select]] )
+# To curdoc
 curdoc().add_root(lay_out)
-
-
-
-# Create glyphs
-f.circle(x='average_grades',
-         y='exam_grades',
-         size=8,
-         source=source)
-
-
 
 
 # Need bokeh server to utilize widgets
