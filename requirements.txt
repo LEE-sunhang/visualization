@@ -8,3 +8,7 @@ matplotlib
 seaborn
 html5lib
 SQLAlchemy
+<<<<<<< HEAD
+=======
+streamlit
+>>>>>>> master
