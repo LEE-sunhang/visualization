@@ -1,0 +1,11 @@
+numpy
+pandas
+openpyxl
+xlwings
+bokeh==2.4.3
+lxml
+matplotlib
+seaborn
+html5lib
+SQLAlchemy
+streamlit
