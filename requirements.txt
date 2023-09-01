@@ -9,3 +9,4 @@ seaborn
 html5lib
 SQLAlchemy
 streamlit
+duckdb
