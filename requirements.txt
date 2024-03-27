@@ -1,5 +1,8 @@
 numpy
 pandas
+polars
+duckdb
+
 openpyxl
 xlwings
 bokeh==2.4.3
@@ -9,4 +12,3 @@ seaborn
 html5lib
 SQLAlchemy
 streamlit
-duckdb
